@@ -18,7 +18,7 @@ namespace MysteryShack
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-       
+        private DB DB = new DB();
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private Category category;
@@ -50,7 +50,7 @@ namespace MysteryShack
             set
             {
                 good = value;
-                PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(Good)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Good)));
             }
         }
 
@@ -68,22 +68,47 @@ namespace MysteryShack
         public MainWindow()
         {
             InitializeComponent();
-
+            GetData();
             DataContext = this;
         }
 
-        private void ShowForm(object sender, RoutedEventArgs e)
+
+        private async void GetData()
         {
+            Goods = await DB.GetListGoods();
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Goods)));
 
         }
 
-        private void DeleteGoods(object sender, RoutedEventArgs e)
+        private async void ShowForm(object sender, RoutedEventArgs e)
         {
+            FormGoods.IsEnabled = true;
 
         }
 
-        private void Save(object sender, RoutedEventArgs e)
+        private async void DeleteGoods(object sender, RoutedEventArgs e)
         {
+            await DB.DeleteGoods(Good);
+            GetData();
+        }   
+
+        private async void Save(object sender, RoutedEventArgs e)
+        {
+            if (Good == null)
+            {
+                 await DB.AddGoods(Good);
+                    GetData();
+               
+            } 
+            else
+                {
+                    await DB.EditGoods(Good);
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Good)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Goods)));
+
+                    //GetData();
+                }
+
 
         }
     }
