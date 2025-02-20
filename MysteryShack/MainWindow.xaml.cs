@@ -21,95 +21,110 @@ namespace MysteryShack
         private DB DB = new DB();
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private Category category;
-        public Category Category
-        {
-            get => category;
-            set
-            {
-                category = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Category)));
-            }
-        }
+        //private Category category;
+        //public Category Category
+        //{
+        //    get => category;
+        //    set
+        //    {
+        //        category = value;
+        //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Category)));
+        //    }
+        //}
 
-        private List<Category> categories;
-        public List<Category> Categories
-        {
-            get => categories;
-            set
-            {
-                categories = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Categories)));
-            }
-        }
+        //private List<Category> categories;
+        //public List<Category> Categories
+        //{
+        //    get => categories;
+        //    set
+        //    {
+        //        categories = value;
+        //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Categories)));
+        //    }
+        //}
 
-        private Goods good;
-        public Goods Good
-        {
-            get => good;
-            set
-            {
-                good = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Good)));
-            }
-        }
+        //private Goods good;
+        //public Goods Good
+        //{
+        //    get => good;
+        //    set
+        //    {
+        //        good = value;
+        //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Good)));
+        //    }
+        //}
 
-        private List<Goods> goods;
-        public List<Goods> Goods
-        {
-            get => goods;
-            set
-            {
-                goods = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Goods)));
-            }
-        }
+        //private List<Goods> goods;
+        //public List<Goods> Goods
+        //{
+        //    get => goods;
+        //    set
+        //    {
+        //        goods = value;
+        //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Goods)));
+        //    }
+        //}
 
         public MainWindow()
         {
             InitializeComponent();
-            GetData();
+            //GetData();
             DataContext = this;
         }
 
-
-        private async void GetData()
+        private void Save(object sender, RoutedEventArgs e)
         {
-            Goods = await DB.GetListGoods();
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Goods)));
 
         }
 
-        private async void ShowForm(object sender, RoutedEventArgs e)
+        private void DeleteGoods(object sender, RoutedEventArgs e)
         {
-            FormGoods.IsEnabled = true;
 
         }
 
-        private async void DeleteGoods(object sender, RoutedEventArgs e)
+        private void ShowForm(object sender, RoutedEventArgs e)
         {
-            await DB.DeleteGoods(Good);
-            GetData();
-        }   
-
-        private async void Save(object sender, RoutedEventArgs e)
-        {
-            if (Good == null)
-            {
-                 await DB.AddGoods(Good);
-                    GetData();
-               
-            } 
-            else
-                {
-                    await DB.EditGoods(Good);
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Good)));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Goods)));
-
-                    //GetData();
-                }
-
 
         }
+
+
+        //private async void GetData()
+        //{
+        //    Goods = await DB.GetListGoods();
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Goods)));
+
+        //}
+
+        //private async void ShowForm(object sender, RoutedEventArgs e)
+        //{
+        //    FormGoods.IsEnabled = true;
+
+        //}
+
+        //private async void DeleteGoods(object sender, RoutedEventArgs e)
+        //{
+        //    await DB.DeleteGoods(Good);
+        //    GetData();
+        //}   
+
+        //private async void Save(object sender, RoutedEventArgs e)
+        //{
+        //    if (Good == null)
+        //    {
+        //         await DB.AddGoods(Good);
+        //            GetData();
+
+        //    } 
+        //    else
+        //        {
+        //            await DB.EditGoods(Good);
+        //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Good)));
+        //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Goods)));
+
+        //            //GetData();
+        //        }
+
+
+        //}
     }
 }
