@@ -1,0 +1,6 @@
+@MysteryShackApi_HostAddress = http://localhost:5096
+
+GET {{MysteryShackApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

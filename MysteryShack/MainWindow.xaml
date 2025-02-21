@@ -26,7 +26,7 @@
                             <Label Content="{Binding Description}"/>
                             <Label Content="{Binding Price}"/>
                             <Label Content="{Binding Amount}"/>
-                            <Label Content="{Binding Id_Category}"/>
+                            <!--<Label Content="{Binding Category}"/>-->
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -37,17 +37,21 @@
             <Button Content="Изменить" Margin="10" Click="ShowForm"/>
             <Button Content="Удалить" Margin="10" Click="DeleteGoods"/>
         </StackPanel>
-        <StackPanel Grid.Column="2" Grid.Row="1" IsEnabled="False" x:Name="FormGoods">
+        <StackPanel Grid.Column="2" Grid.Row="1" IsEnabled="False" x:Name="FormGoods" >
+         
             <Label Content="Название"/>
-            <TextBox Text="{Binding Good.Title}"/>
+            <TextBox Text="{Binding Good.Title}" />
             <Label Content="Описание"/>
-            <TextBox Text="{Binding Good.Description}"/>
+                <TextBox Text="{Binding Good.Description}" />
             <Label Content="Цена"/>
-            <TextBox Text="{Binding Good.Price}"/>
+            <TextBox Text="{Binding Good.Price}" />
             <Label Content="Кол-во на складе"/>
-            <TextBox Text="{Binding Good.Amount}"/>
-            <ComboBox ItemsSource="{Binding Categories}" SelectedItem="{Binding Category}" DisplayMemberPath="{Binding Title}"/>
-            <Button Content="Сохранить" Click="Save"/>
+                <TextBox Text="{Binding Good.Amount}" />
+            <!--<ComboBox ItemsSource="{Binding Categories}" SelectedItem="{Binding Category}" DisplayMemberPath="{Binding Title}"/>-->
+                <Button Content="Сохранить" Click="Add" />
+                <Button Content="Изменить" Click="Edit" />
+          
         </StackPanel>
+        
     </Grid>
 </Window>
