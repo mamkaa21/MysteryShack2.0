@@ -10,8 +10,8 @@ public partial class Category
     public string? Title { get; set; }
 
     public virtual ICollection<Good> Goods { get; set; } = new List<Good>();
-    public override string ToString()
-    {
-        return $" Название {Title}";
-    }
+    //public override string ToString()
+    //{
+    //    return $" Название {Title}";
+    //}
 }

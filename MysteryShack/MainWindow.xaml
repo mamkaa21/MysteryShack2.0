@@ -26,14 +26,14 @@
                             <Label Content="{Binding Description}"/>
                             <Label Content="{Binding Price}"/>
                             <Label Content="{Binding Amount}"/>
-                            <!--<Label Content="{Binding Category}"/>-->
+                            <Label Content="{Binding IdCategoryNavigation.Title}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
-            <Button Content="Добавить" Margin="10" Click="ShowForm" />
+            <Button Content="Добавить" Margin="10" Click="ShowAddForm" />
             <Button Content="Изменить" Margin="10" Click="ShowForm"/>
             <Button Content="Удалить" Margin="10" Click="DeleteGoods"/>
         </StackPanel>
@@ -47,9 +47,9 @@
             <TextBox Text="{Binding Good.Price}" />
             <Label Content="Кол-во на складе"/>
                 <TextBox Text="{Binding Good.Amount}" />
-            <!--<ComboBox ItemsSource="{Binding Categories}" SelectedItem="{Binding Category}" DisplayMemberPath="{Binding Title}"/>-->
-                <Button Content="Сохранить" Click="Add" />
-                <Button Content="Изменить" Click="Edit" />
+            <ComboBox ItemsSource="{Binding Categories}" SelectedItem="{Binding Category}" DisplayMemberPath="Title"/>
+            <Button Content="Сохранить" Click="Add" />
+            
           
         </StackPanel>
         
