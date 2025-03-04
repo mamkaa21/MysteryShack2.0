@@ -90,6 +90,7 @@ namespace MysteryShack
             DataContext = this;
         }
 
+
         public async void Add(object sender, RoutedEventArgs e)
         {
             if (Good.Id == 0)
